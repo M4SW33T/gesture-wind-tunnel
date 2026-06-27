@@ -1,20 +1,35 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# AeroFlow: Virtual Wind Tunnel
 
-# Run and deploy your AI Studio app
+A playful gesture-control prototype for exploring airflow behavior around a racing car. It is designed as a portfolio-friendly vibe-coding case study: fast concepting, visible interaction, and a polished enough browser demo without pretending to be a real CFD solver.
 
-This contains everything you need to run your app locally.
+## Interaction
 
-View your app in AI Studio: https://ai.studio/apps/5c20c9ed-29af-4e09-8cb9-06e085a306b8
+- Open palm: widen the airflow field.
+- Closed fist: focus the stream into a tighter jet.
+- Move hand left or right: rotate the vehicle turntable.
+- No hand detected: the model keeps a slow ambient rotation while the HUD searches for a hand again.
+
+## What Was Improved
+
+- Reworked the launch screen and HUD for a cleaner portfolio presentation.
+- Fixed garbled text and angle display.
+- Added hand-tracking states for loading, camera access, tracking, and searching.
+- Smoothed hand position and palm openness so the car does not jitter as much.
+- Added a center dead zone for turntable rotation.
+- Tuned the airflow particles to reduce random flicker while keeping a dynamic wake.
+- Removed unused AI-service scaffolding from the runtime.
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+**Prerequisite:** Node.js
 
+```bash
+npm install
+npm run dev
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+The browser will ask for camera access after you press **Initialize System**.
+
+## Portfolio Note
+
+Suggested framing: "A gesture-driven aerodynamic visualization prototype created with AI-assisted coding, then refined for interaction clarity, input stability, and presentation quality."

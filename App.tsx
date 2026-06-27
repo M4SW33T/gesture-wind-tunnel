@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stage } from '@react-three/drei';
+import { OrbitControls, ContactShadows } from '@react-three/drei';
 import { Activity, AlertTriangle, Aperture, Gauge, Hand, Power, RotateCw, Scan, Wind } from 'lucide-react';
 
 import HandController from './components/HandController';
@@ -94,9 +94,10 @@ const App: React.FC = () => {
     <div className="relative h-screen w-full overflow-hidden bg-black font-mono text-white select-none">
       <Canvas shadows dpr={[1, 2]} camera={{ position: [5, 2, 5], fov: 45 }}>
         <color attach="background" args={['#050505']} />
-        <Stage environment="city" intensity={0.6} adjustCamera={false}>
-          <RotatingStage rotation={rotation} handData={handData} isActive={isActive} />
-        </Stage>
+        <ambientLight intensity={0.35} />
+        <directionalLight position={[10, 10, 5]} intensity={0.7} castShadow />
+        <ContactShadows position={[0, -0.45, 0]} opacity={0.45} scale={10} blur={2} far={2.5} />
+        <RotatingStage rotation={rotation} handData={handData} isActive={isActive} />
         <OrbitControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
       </Canvas>
 

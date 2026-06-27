@@ -33,34 +33,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <pre id="errors" style="position:fixed;top:50px;left:10px;z-index:99999;background:#1a0000;color:#ff4444;padding:15px;font-size:13px;font-family:monospace;max-width:95vw;max-height:80vh;overflow:auto;border:1px solid red;border-radius:4px;white-space:pre-wrap;word-break:break-all;"></pre>
-    <script>
-      window.onerror = function(msg, url, line, col, err) {
-        var el = document.getElementById('errors');
-        el.textContent += 'ERROR: ' + msg + '\n  at ' + url + ':' + line + ':' + col + '\n  stack: ' + (err&&err.stack||'') + '\n\n';
-        el.style.display = 'block';
-      };
-      window.addEventListener('unhandledrejection', function(e) {
-        var el = document.getElementById('errors');
-        el.textContent += 'PROMISE REJECTION: ' + (e.reason&&e.reason.message||e.reason) + '\n  stack: ' + (e.reason&&e.reason.stack||'') + '\n\n';
-        el.style.display = 'block';
-      });
-      setTimeout(function() {
-        var root = document.getElementById('root');
-        var el = document.getElementById('errors');
-        el.textContent += '[3s check] root children: ' + root.children.length + '\n';
-        el.textContent += '[3s check] root innerHTML length: ' + root.innerHTML.length + '\n';
-        if (root.children.length === 0) {
-          el.textContent += '[3s check] REACT DID NOT RENDER ANYTHING\n';
-        }
-      }, 3000);
-      setTimeout(function() {
-        var root = document.getElementById('root');
-        var el = document.getElementById('errors');
-        el.textContent += '[8s check] root children: ' + root.children.length + '\n';
-        el.textContent += '[8s check] root innerHTML length: ' + root.innerHTML.length + '\n';
-      }, 8000);
-    </script>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

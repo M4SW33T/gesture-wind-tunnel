@@ -45,6 +45,21 @@
         el.textContent += 'PROMISE REJECTION: ' + (e.reason&&e.reason.message||e.reason) + '\n  stack: ' + (e.reason&&e.reason.stack||'') + '\n\n';
         el.style.display = 'block';
       });
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        var el = document.getElementById('errors');
+        el.textContent += '[3s check] root children: ' + root.children.length + '\n';
+        el.textContent += '[3s check] root innerHTML length: ' + root.innerHTML.length + '\n';
+        if (root.children.length === 0) {
+          el.textContent += '[3s check] REACT DID NOT RENDER ANYTHING\n';
+        }
+      }, 3000);
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        var el = document.getElementById('errors');
+        el.textContent += '[8s check] root children: ' + root.children.length + '\n';
+        el.textContent += '[8s check] root innerHTML length: ' + root.innerHTML.length + '\n';
+      }, 8000);
     </script>
     <script type="module" src="/index.tsx"></script>
   </body>

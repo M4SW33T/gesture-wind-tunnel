@@ -1,0 +1,8 @@
+{
+  "name": "1 AeroFlow: Virtual Wind Tunnel",
+  "description": "An interactive 3D virtual wind tunnel using hand gestures to control smoke streamlines and analyze car aerodynamics, powered by Gemini.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}
